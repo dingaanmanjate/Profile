@@ -134,5 +134,107 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Cert Details Logic (Inline Dropdown) ---
-    // REMOVED - Converted to direct links with tooltips per user request.
+    const certIcons = document.querySelectorAll('.cert-icon-badge');
+    const detailsPanel = document.getElementById('cert-details-panel');
+    const detailTitle = document.getElementById('detail-title');
+    const detailDesc = document.getElementById('detail-desc');
+    const detailLink = document.getElementById('detail-link');
+
+    // Certificate Data Dictionary
+    const certData = {
+        "AWS SA": {
+            title: "AWS Certified Solutions Architect",
+            desc: "Validated expertise in designing distributed systems on AWS, focusing on scalability, security, and cost-optimization.",
+            link: "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+        },
+        "Google PCA": {
+            title: "Google Professional Cloud Architect",
+            desc: "Expert-level validation of designing and managing robust, secure, and scalable Google Cloud architectures.",
+            link: "https://cloud.google.com/learn/certification/cloud-architect"
+        },
+        "CKA": {
+            title: "Certified Kubernetes Administrator",
+            desc: "Demonstrated competence in installation, configuration, and management of production-grade Kubernetes clusters.",
+            link: "https://www.cncf.io/certification/cka/"
+        },
+        "Security+": {
+            title: "CompTIA Security+",
+            desc: "Global certification validating baseline skills for core security functions and pursuing an IT security career.",
+            link: "https://www.comptia.org/certifications/security"
+        },
+        "CISSP": {
+            title: "Certified Information Systems Security Professional",
+            desc: "Advanced security certification proving effective design, implementation, and management of cybersecurity programs.",
+            link: "https://www.isc2.org/Certifications/CISSP"
+        },
+        "CEH": {
+            title: "Certified Ethical Hacker",
+            desc: "Understand and know how to look for weaknesses and vulnerabilities in target systems using the same knowledge and tools as a malicious hacker.",
+            link: "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/"
+        },
+        "PMP": {
+            title: "Project Management Professional",
+            desc: "The gold standard in project management, validating competence to lead and direct projects and teams.",
+            link: "https://www.pmi.org/certifications/project-management-pmp"
+        },
+        "Scrum": {
+            title: "Certified Scrum Master",
+            desc: "Understanding of the Scrum framework and how to help teams use it to increase the likelihood of the project's overall success.",
+            link: "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+        },
+        "ITIL": {
+            title: "ITIL 4 Foundation",
+            desc: "Understanding the ITIL framework for IT Service Management and how to align IT services with business needs.",
+            link: "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation"
+        },
+        "Docker": {
+            title: "Docker Certified Associate",
+            desc: "Validates skillset with Docker Enterprise Edition and Docker Swarm for container orchestration.",
+            link: "https://training.mirantis.com/dca-certification-exam/"
+        },
+        "Terraform": {
+            title: "HashiCorp Certified: Terraform Associate",
+            desc: "Cloud engineering skills in infrastructure automation using HashiCorp Terraform.",
+            link: "https://www.hashicorp.com/certification/terraform-associate"
+        },
+        "Linux": {
+            title: "LPI Linux Essentials",
+            desc: "Foundational knowledge of the Linux operating system and open source command line tools.",
+            link: "https://www.lpi.org/our-certifications/linux-essentials-overview/"
+        }
+    };
+
+    let activeCert = null;
+
+    certIcons.forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            e.preventDefault();
+            const key = icon.getAttribute('data-title');
+            const data = certData[key];
+
+            if (!data) return;
+
+            // Toggle Logic
+            if (activeCert === key && detailsPanel.classList.contains('visible')) {
+                // Close if clicking same icon
+                detailsPanel.classList.remove('visible');
+                icon.classList.remove('active');
+                activeCert = null;
+            } else {
+                // Open or Switch
+                // Remove active class from all
+                certIcons.forEach(i => i.classList.remove('active'));
+
+                // Set Content
+                detailTitle.textContent = data.title;
+                detailDesc.textContent = data.desc;
+                detailLink.href = data.link;
+
+                // Show Panel
+                detailsPanel.classList.add('visible');
+                icon.classList.add('active');
+                activeCert = key;
+            }
+        });
+    });
 });

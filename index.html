@@ -137,6 +137,20 @@
                         <span class="cert-tooltip">LPI Linux</span>
                     </a>
                 </div>
+                <!-- Dynamic Detail Panel -->
+                <div id="cert-details-panel" class="cert-details-panel">
+                    <div class="detail-header">
+                        <h4 id="detail-title">Certified Detail</h4>
+                        <a id="detail-link" href="#" target="_blank" class="detail-link-icon" title="View Certificate">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                    <p id="detail-desc">Click a certificate to view details.</p>
+                </div>
             </div>
         </div>
     </header>
@@ -248,29 +262,14 @@
                 <div class="accordion-content">
                     <div class="content-wrapper timeline">
 
-                        <!-- Experience Item 1 -->
+                        <!-- Experience will be updated later -->
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
                             <div class="timeline-content">
-                                <h3>Senior Software Engineer</h3>
-                                <span class="timeline-meta">TechCorp | 2023 - Present</span>
+                                <h3>Software Engineer</h3>
+                                <span class="timeline-meta">Pending Update...</span>
                                 <ul class="timeline-details">
-                                    <li>Led migration of legacy monolith to microservices architecture.</li>
-                                    <li>Improved system throughput by 40% using Rust-based edge workers.</li>
-                                    <li>Mentored junior developers and established code review guidelines.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Experience Item 2 -->
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-content">
-                                <h3>Software Developer</h3>
-                                <span class="timeline-meta">InnovateInc | 2020 - 2023</span>
-                                <ul class="timeline-details">
-                                    <li>Developed core features for the flagship SaaS product.</li>
-                                    <li>Implemented CI/CD pipelines reducing deployment time by 60%.</li>
+                                    <li>CV integration pending.</li>
                                 </ul>
                             </div>
                         </div>
@@ -296,8 +295,8 @@
                                 </svg>
                             </div>
                             <div class="card-details">
-                                <h3>BSc Computer Science</h3>
-                                <p>University of Tech | 2016-2020</p>
+                                <h3>BSc Mathematics and Computer Science</h3>
+                                <p>UNISA | 2025 - Present</p>
                             </div>
                         </div>
                     </div>
@@ -341,15 +340,7 @@
         </div>
     </footer>
 
-    <!-- Modal for Certification Details -->
-    <div id="cert-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="modal-close" class="modal-close">&times;</button>
-            <h2 id="modal-title"></h2>
-            <h4 id="modal-issuer" class="modal-subtitle"></h4>
-            <p id="modal-desc"></p>
-        </div>
-    </div>
+
 
     <script src="main.js"></script>
 </body>
