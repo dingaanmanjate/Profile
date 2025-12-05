@@ -1,0 +1,690 @@
+/* Global Variables & Reset */
+:root {
+    --bg-main: #1e1e1e;
+    /* Dark Grey Background from image */
+    --bg-dark: #0a0a0a;
+    /* Almost Black */
+    --bg-card: #252525;
+    /* Dark Card Background */
+    --bg-card-hover: #333333;
+    /* Lighter on Hover */
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --accent: #ffffff;
+
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+
+    --header-height: 400px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header / Hero Section */
+header#hero {
+    position: relative;
+    height: 500px;
+    /* Slightly taller for the grid */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+.hero-container-inner {
+    /* Tighter width removed, allowing full width for 2/3 1/3 split */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    /* More breathing room on sides */
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    /* 1.5 to 1 is roughly 60/40, user asked 2/3 1/3 (2fr 1fr) but let's see what fits the giant text best. 2fr 1fr might crowd the certs. Let's try 1.8fr 1fr */
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-text {
+    text-align: left;
+    width: 100%;
+}
+
+.hero-name {
+    font-size: 7rem;
+    /* A LOT BIGGER */
+    font-weight: 800;
+    line-height: 0.85;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: -2px;
+    /* Tighten for impact */
+}
+
+.hero-name span {
+    display: block;
+}
+
+.hero-name .lname {
+    color: #666;
+}
+
+.hero-tagline {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #888;
+    font-family: var(--font-code);
+    max-width: 600px;
+    /* Allow tagline to span wider */
+    margin-left: 0.5rem;
+}
+
+/* Hero Cert Grid (Right Side - Transparent) */
+.hero-stack-grid {
+    text-align: left;
+    background: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    justify-self: start;
+    /* Align to start of its column */
+    padding-left: 2rem;
+    /* visual gap */
+}
+
+.hero-cert-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #888;
+    /* Subtle grey title */
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: none;
+    /* No border */
+    padding-bottom: 0;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.8;
+    /* Increased opacity for standout */
+}
+
+/* Removed old centered content */
+
+/* Layout Container */
+.layout-container {
+    display: block;
+    /* Flexible for main content grid */
+    min-height: calc(100vh - var(--header-height));
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Right Sidebar Styles Deleted - Integrated into Hero */
+
+.sidebar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1.5px;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.cert-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns for a wider, shorter panel closer to "tab" shape? Or Stick to 3? 3x4 = 12 items. 4x3 = 12 items. 4 columns makes it wider "alongside". */
+    gap: 0.8rem;
+}
+
+.cert-icon-badge {
+    width: 50px;
+    /* Bigger size */
+    height: 50px;
+    background: #222;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.cert-icon-badge:hover,
+.cert-icon-badge.active {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+    transform: scale(1.1);
+    /* Pop effect */
+}
+
+/* Tooltip on Hover */
+.cert-tooltip {
+    position: absolute;
+    bottom: 110%;
+    /* Above the badge */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cert-icon-badge:hover .cert-tooltip {
+    opacity: 1;
+}
+
+.cert-icon-badge svg {
+    width: 26px;
+    /* Bigger icon */
+    height: 26px;
+}
+
+/* Detail Panel (Pseudo-Dropdown) */
+.cert-details-panel {
+    margin-top: 1.5rem;
+    background: rgba(20, 20, 20, 0.95);
+    border-left: 2px solid #fff;
+    padding: 1rem;
+    border-radius: 0 8px 8px 8px;
+    display: none;
+    /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 300px;
+    /* Match grid width roughly */
+}
+
+.cert-details-panel.visible {
+    display: block;
+    opacity: 1;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+#detail-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#detail-desc {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.4;
+    font-family: var(--font-code);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-container-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1rem;
+        gap: 3rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-name {
+        font-size: 4rem;
+        /* Smaller on mobile */
+        align-items: center;
+    }
+
+    .hero-tagline {
+        margin: 0 auto;
+    }
+
+    .hero-stack-grid {
+        justify-self: center;
+        padding-left: 0;
+    }
+
+    .cert-grid-compact {
+        grid-template-columns: repeat(4, 1fr);
+        /* Keep 4 or switch to 3/2 depending on width */
+    }
+}
+
+/* Removed Hero Badges Styles */
+
+/* Main Content Column - Free Layout Grid */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    /* 2 columns responsive */
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Accordion Sections - Card Style for Grid */
+.accordion-section {
+    border-bottom: none;
+    background-color: var(--bg-card);
+    /* Floating card look */
+    border-radius: 16px;
+    overflow: hidden;
+    /* For border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.accordion-section:hover {
+    transform: translateY(-5px);
+}
+
+.accordion-header {
+    background-color: transparent;
+    color: var(--text-main);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle separator */
+}
+
+.accordion-header:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.accordion-section.active .accordion-header {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.accordion-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.chevron {
+    font-family: var(--font-code);
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    opacity: 0.5;
+}
+
+.accordion-section.active .chevron {
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.accordion-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--bg-main);
+    opacity: 0;
+}
+
+.accordion-section.active .accordion-content {
+    height: auto;
+    opacity: 1;
+}
+
+.content-wrapper {
+    padding: 1rem 0 3rem 0;
+    /* Vertical padding */
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Cards (Generic) */
+.card {
+    background: var(--bg-card);
+    border: none;
+    /* Removed border for cleaner look */
+    border-radius: 12px;
+    /* Smooth rounded corners */
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    align-items: center;
+    /* Center vertically */
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    /* Subtle overlay/gradient for depth */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: var(--bg-card-hover);
+    z-index: 5;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    /* Rounded icons from reference */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+}
+
+.card-icon.small {
+    width: 48px;
+    height: 48px;
+}
+
+.card-icon svg {
+    width: 50%;
+    height: 50%;
+}
+
+.card-details {
+    flex-grow: 1;
+}
+
+.card-details h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.card-details p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+/* Projects Specific */
+.tags {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.tag {
+    background: #000;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    /* Slightly rounded */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #333;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    color: #ccc;
+    transition: all 0.2s;
+}
+
+.btn-link:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Timeline (Experience) */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid #ddd;
+    margin-left: 1rem;
+    padding: 1rem 0 1rem 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2.4rem;
+    /* Adjust based on padding/border */
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #666;
+    border: 2px solid #fff;
+}
+
+.timeline-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-meta {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+    font-family: var(--font-code);
+}
+
+.timeline-details {
+    list-style: disc;
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-dark);
+    color: #444;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-icons a {
+    color: #444;
+    transition: all 0.3s;
+    width: 24px;
+    height: 24px;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column;
+    }
+
+    .hero-badges-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content {
+        padding-bottom: 0;
+    }
+
+    /* Modal Mobile Adjust */
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+
+    .hero-name {
+        font-size: 2.5rem;
+    }
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #444;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+#modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    color: #666;
+    margin-bottom: 1rem;
+    font-family: var(--font-code);
+}

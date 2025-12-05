@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dingaan Manjate | Tech Portfolio</title>
+    <meta name="description" content="Innovating the Future, One Commit A Time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Hero Section -->
+    <header id="hero">
+        <canvas id="hero-canvas"></canvas>
+
+        <div class="hero-container-inner">
+            <!-- Left: Name & Tagline -->
+            <div class="hero-text">
+                <h1 class="hero-name">
+                    <span class="fname">DINGAAN</span>
+                    <span class="lname">MANJATE</span>
+                </h1>
+                <p class="hero-tagline">Innovating the Future, One Commit A Time.</p>
+            </div>
+
+            <!-- Right: Certifications Grid -->
+            <div class="hero-stack-grid">
+                <h3 class="hero-cert-title">CERTIFICATIONS</h3>
+                <div class="cert-grid-compact">
+                    <!-- Row 1 -->
+                    <a href="#" class="cert-icon-badge" data-title="AWS SA">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                        <span class="cert-tooltip">AWS Solutions Architect</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="Google PCA">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                        <span class="cert-tooltip">Google Cloud Architect</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="CKA">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        <span class="cert-tooltip">Certified Kubernetes Admin</span>
+                    </a>
+
+                    <!-- Row 2 -->
+                    <a href="#" class="cert-icon-badge" data-title="Security+">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                        </svg>
+                        <span class="cert-tooltip">CompTIA Security+</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="CISSP">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                        <span class="cert-tooltip">CISSP</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="CEH">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                        <span class="cert-tooltip">Certified Ethical Hacker</span>
+                    </a>
+
+                    <!-- Row 3 -->
+                    <a href="#" class="cert-icon-badge" data-title="PMP">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                        <span class="cert-tooltip">PMP</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="Scrum">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span class="cert-tooltip">Scrum Master</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="ITIL">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                            </path>
+                        </svg>
+                        <span class="cert-tooltip">ITIL 4</span>
+                    </a>
+                    <!-- Row 4 -->
+                    <a href="#" class="cert-icon-badge" data-title="Docker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                            <circle cx="12" cy="5" r="3"></circle>
+                            <path d="M12 8v3"></path>
+                        </svg>
+                        <span class="cert-tooltip">Docker Certified</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="Terraform">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 3v18h18" />
+                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                        </svg>
+                        <span class="cert-tooltip">Terraform Associate</span>
+                    </a>
+                    <a href="#" class="cert-icon-badge" data-title="Linux">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="cert-tooltip">LPI Linux</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+
+        <!-- Main Content (Full Width now) -->
+        <main class="main-content">
+
+            <!-- Projects Section -->
+            <section class="accordion-section active" id="projects">
+                <header class="accordion-header" tabindex="0">
+                    <h2>PROJECTS</h2>
+                    <span class="chevron">&gt;&gt;&gt;</span>
+                </header>
+                <div class="accordion-content">
+                    <div class="content-wrapper">
+                        <!-- Project Card 1: devfolioAI -->
+                        <div class="card project-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z">
+                                    </path>
+                                    <path d="M12 12v.01"></path>
+                                    <path d="M12 6a4 4 0 0 0-4 4"></path>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>devfolioAI</h3>
+                                <p>AI-powered tool for generating professional bios, project summaries, and learning
+                                    reflections.</p>
+                                <div class="tags">
+                                    <span class="tag">AI</span>
+                                    <span class="tag">Automation</span>
+                                </div>
+                                <div class="actions">
+                                    <a href="https://github.com/dingaanmanjate/devfolioAI" target="_blank"
+                                        class="btn-link">GitHub Repo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Card 2: Portfolio -->
+                        <div class="card project-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>dingaanmanjate.github.io</h3>
+                                <p>Personal professional portfolio website hosted on GitHub Pages.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML/CSS</span>
+                                    <span class="tag">Portfolio</span>
+                                </div>
+                                <div class="actions">
+                                    <a href="https://dingaanmanjate.github.io" target="_blank" class="btn-link">Live
+                                        Demo</a>
+                                    <a href="https://github.com/dingaanmanjate/dingaanmanjate.github.io" target="_blank"
+                                        class="btn-link">GitHub Repo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Organizations Section -->
+            <section class="accordion-section" id="organizations">
+                <header class="accordion-header" tabindex="0">
+                    <h2>ORGANIZATIONS</h2>
+                    <span class="chevron">&gt;&gt;&gt;</span>
+                </header>
+                <div class="accordion-content">
+                    <div class="content-wrapper">
+                        <!-- Org Item 1 -->
+                        <div class="card org-card">
+                            <div class="card-icon small">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>dev-api-org</h3>
+                                <p>Contributor / Member</p>
+                                <div class="actions">
+                                    <a href="https://github.com/dev-api-org" target="_blank" class="btn-link">View
+                                        Org</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="accordion-section" id="experience">
+                <header class="accordion-header" tabindex="0">
+                    <h2>EXPERIENCE</h2>
+                    <span class="chevron">&gt;&gt;&gt;</span>
+                </header>
+                <div class="accordion-content">
+                    <div class="content-wrapper timeline">
+
+                        <!-- Experience Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Senior Software Engineer</h3>
+                                <span class="timeline-meta">TechCorp | 2023 - Present</span>
+                                <ul class="timeline-details">
+                                    <li>Led migration of legacy monolith to microservices architecture.</li>
+                                    <li>Improved system throughput by 40% using Rust-based edge workers.</li>
+                                    <li>Mentored junior developers and established code review guidelines.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h3>Software Developer</h3>
+                                <span class="timeline-meta">InnovateInc | 2020 - 2023</span>
+                                <ul class="timeline-details">
+                                    <li>Developed core features for the flagship SaaS product.</li>
+                                    <li>Implemented CI/CD pipelines reducing deployment time by 60%.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="accordion-section" id="education">
+                <header class="accordion-header" tabindex="0">
+                    <h2>EDUCATION</h2>
+                    <span class="chevron">&gt;&gt;&gt;</span>
+                </header>
+                <div class="accordion-content">
+                    <div class="content-wrapper">
+                        <!-- Education Item -->
+                        <div class="card education-card">
+                            <div class="card-icon small">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>BSc Computer Science</h3>
+                                <p>University of Tech | 2016-2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span>Connect with me:</span>
+            <div class="social-icons">
+                <a href="#" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="mailto:email@example.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Certification Details -->
+    <div id="cert-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">&times;</button>
+            <h2 id="modal-title"></h2>
+            <h4 id="modal-issuer" class="modal-subtitle"></h4>
+            <p id="modal-desc"></p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
