@@ -161,7 +161,7 @@
         <main class="main-content">
 
             <!-- Projects Section -->
-            <section class="accordion-section active" id="projects">
+            <section class="accordion-section" id="projects">
                 <header class="accordion-header" tabindex="0">
                     <h2>PROJECTS</h2>
                     <span class="chevron">&gt;&gt;&gt;</span>
@@ -194,26 +194,100 @@
                             </div>
                         </div>
 
-                        <!-- Project Card 2: Portfolio -->
+
+                        <!-- Project Card: ai-app-containerization -->
                         <div class="card project-card">
                             <div class="card-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
                                 </svg>
                             </div>
                             <div class="card-details">
-                                <h3>dingaanmanjate.github.io</h3>
-                                <p>Personal professional portfolio website hosted on GitHub Pages.</p>
+                                <h3>ai-app-containerization</h3>
+                                <p>A low-code AI app containerised and deployed to Kubernetes using CI/CD.</p>
                                 <div class="tags">
-                                    <span class="tag">HTML/CSS</span>
-                                    <span class="tag">Portfolio</span>
+                                    <span class="tag">PowerShell</span>
+                                    <span class="tag">AI</span>
+                                    <span class="tag">Kubernetes</span>
                                 </div>
                                 <div class="actions">
-                                    <a href="https://dingaanmanjate.github.io" target="_blank" class="btn-link">Live
-                                        Demo</a>
-                                    <a href="https://github.com/dingaanmanjate/dingaanmanjate.github.io" target="_blank"
+                                    <a href="https://github.com/dev-api-org/ai-app-containerization" target="_blank"
+                                        class="btn-link">GitHub Repo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Card: ai-portfolio-assistant -->
+                        <div class="card project-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path
+                                        d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>ai-portfolio-assistant</h3>
+                                <p>AI-powered tool for generating professional bios and project summaries.</p>
+                                <div class="tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">AI</span>
+                                </div>
+                                <div class="actions">
+                                    <a href="https://github.com/dev-api-org/ai-portfolio-assistant" target="_blank"
+                                        class="btn-link">GitHub Repo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Card: Smart-Data-Manager -->
+                        <div class="card project-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>Smart-Data-Manager</h3>
+                                <p>Python ETL pipeline: extracts, cleans, transforms, and loads data into SQL Server.
+                                </p>
+                                <div class="tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">ETL</span>
+                                    <span class="tag">SQL Server</span>
+                                </div>
+                                <div class="actions">
+                                    <a href="https://github.com/dingaanmanjate/Smart-Data-Manager" target="_blank"
+                                        class="btn-link">GitHub Repo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Card: Rubics-Cube-Game -->
+                        <div class="card project-card">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                                    <path d="M6 12h4m-2-2v4"></path>
+                                    <circle cx="16" cy="11" r="1"></circle>
+                                    <circle cx="18" cy="13" r="1"></circle>
+                                </svg>
+                            </div>
+                            <div class="card-details">
+                                <h3>Rubics-Cube-Game</h3>
+                                <p>A C++ Rubik's Cube game implementation.</p>
+                                <div class="tags">
+                                    <span class="tag">C++</span>
+                                    <span class="tag">Game Dev</span>
+                                </div>
+                                <div class="actions">
+                                    <a href="https://github.com/dingaanmanjate/Rubics-Cube-Game" target="_blank"
                                         class="btn-link">GitHub Repo</a>
                                 </div>
                             </div>
@@ -233,12 +307,7 @@
                         <!-- Org Item 1 -->
                         <div class="card org-card">
                             <div class="card-icon small">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
+                                <img src="https://github.com/dev-api-org.png" alt="dev-api-org logo">
                             </div>
                             <div class="card-details">
                                 <h3>dev-api-org</h3>
@@ -246,6 +315,22 @@
                                 <div class="actions">
                                     <a href="https://github.com/dev-api-org" target="_blank" class="btn-link">View
                                         Org</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Org Item 2 -->
+                        <div class="card org-card">
+                            <div class="card-icon small">
+                                <img src="https://github.com/Spectrum-Digital-Services.png"
+                                    alt="Spectrum Digital Services logo">
+                            </div>
+                            <div class="card-details">
+                                <h3>Spectrum Digital Services</h3>
+                                <p>Founder & Lead</p>
+                                <div class="actions">
+                                    <a href="https://github.com/Spectrum-Digital-Services" target="_blank"
+                                        class="btn-link">View Org</a>
                                 </div>
                             </div>
                         </div>
@@ -266,10 +351,12 @@
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
                             <div class="timeline-content">
-                                <h3>Software Engineer</h3>
-                                <span class="timeline-meta">Pending Update...</span>
+                                <h3>Cloud Engineering Internship</h3>
+                                <span class="timeline-meta">Project y | Nov 2025 - Present</span>
                                 <ul class="timeline-details">
-                                    <li>CV integration pending.</li>
+                                    <li>Gained extensive Cloud and DevOps knowledge.</li>
+                                    <li>Acquired all listed certifications during this internship.</li>
+                                    <li>Focused on cloud engineering and infrastructure automation.</li>
                                 </ul>
                             </div>
                         </div>
@@ -287,7 +374,7 @@
                 <div class="accordion-content">
                     <div class="content-wrapper">
                         <!-- Education Item -->
-                        <div class="card education-card">
+                        <div class="card education-card" id="edu-card-unisa">
                             <div class="card-icon small">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -297,6 +384,61 @@
                             <div class="card-details">
                                 <h3>BSc Mathematics and Computer Science</h3>
                                 <p>UNISA | 2025 - Present</p>
+
+                                <div class="edu-progress-container">
+                                    <div class="edu-progress-bar">
+                                        <div class="edu-progress-fill" style="width: 33%;"></div>
+                                    </div>
+                                    <span class="edu-progress-text">year 1 of 3 In | Progress</span>
+                                </div>
+
+                                <div class="education-timeline hidden">
+                                    <div class="edu-year">
+                                        <h4>2025 - Year 1</h4>
+                                        <ul class="module-list">
+                                            <li class="module-item">
+                                                <span class="module-code">COS1511</span>
+                                                <span class="module-name">Introduction to Programming I</span>
+                                                <span class="module-status passed">PD</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">COS1512</span>
+                                                <span class="module-name">Introduction to Programming II</span>
+                                                <span class="module-status pending">Pending</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">MAT1512</span>
+                                                <span class="module-name">Calculus A</span>
+                                                <span class="module-status passed">PD</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">MAT1613</span>
+                                                <span class="module-name">Calculus B</span>
+                                                <span class="module-status passed">PD</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">COS1501</span>
+                                                <span class="module-name">Theoretical Computer Science I</span>
+                                                <span class="module-status pending">Pending</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">COS1521</span>
+                                                <span class="module-name">Theoretical Computer Science I</span>
+                                                <span class="module-status pending">Pending</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">MATH1503</span>
+                                                <span class="module-name">Linear Algebra</span>
+                                                <span class="module-status pending">Pending</span>
+                                            </li>
+                                            <li class="module-item">
+                                                <span class="module-code">EUP1501</span>
+                                                <span class="module-name">Ethical ICTs for Development</span>
+                                                <span class="module-status passed">PD</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -310,10 +452,11 @@
 
     <!-- Footer -->
     <footer>
+        <canvas id="footer-canvas"></canvas>
         <div class="footer-content">
             <span>Connect with me:</span>
             <div class="social-icons">
-                <a href="#" aria-label="GitHub">
+                <a href="https://github.com/dingaanmanjate" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path
@@ -321,7 +464,7 @@
                         </path>
                     </svg>
                 </a>
-                <a href="#" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/dingaan-manjate-32488735a/" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -329,7 +472,7 @@
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </a>
-                <a href="mailto:email@example.com" aria-label="Email">
+                <a href="mailto:dingaanmanjate@gmail.com" aria-label="Email">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>

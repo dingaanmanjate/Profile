@@ -25,8 +25,36 @@
     box-sizing: border-box;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    /* Dark track matching background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    /* Dark gray thumb */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Lighter on hover */
+}
+
+/* Firefox Support */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #0a0a0a;
+}
+
 body {
-    font-family: var(--font-main);
+    background-color: var(--bg-dark);
     background-color: var(--bg-main);
     color: var(--text-main);
     line-height: 1.6;
@@ -490,6 +518,13 @@ header#hero {
     height: 50%;
 }
 
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .card-details {
     flex-grow: 1;
 }
@@ -601,31 +636,353 @@ header#hero {
 }
 
 /* Footer */
+/* Footer */
 footer {
     background-color: var(--bg-dark);
     color: #444;
     padding: 3rem 1.5rem;
+    /* Revert to larger padding initially */
     text-align: center;
     border-top: 1px solid #222;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    /* Below sticky header */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+footer.footer-shrink {
+    padding: 0;
+    height: 60px;
+    /* Match header height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer.footer-shrink .footer-content {
+    font-size: 1.2rem;
+    /* Reduce text size slightly */
+    gap: 1.5rem;
+}
+
+footer.footer-shrink .social-icons svg {
+    width: 24px;
+    /* Reduce icon size slightly */
+    height: 24px;
+}
+
+footer.footer-shrink #footer-canvas {
+    height: 200px;
+    /* Prevent squashing, force crop */
+    top: auto;
+    bottom: 0;
+}
+
+
+
+#footer-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.5;
+    /* Subtle background */
+    pointer-events: none;
 }
 
 .footer-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    /* Above canvas */
+}
+
+.social-icons {
+    display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .social-icons a {
     color: #444;
     transition: all 0.3s;
-    width: 24px;
-    height: 24px;
+    display: flex;
+}
+
+.social-icons svg {
+    width: 32px;
+    height: 32px;
 }
 
 .social-icons a:hover {
     color: #fff;
     transform: scale(1.2);
+}
+
+/* Add padding to body to prevent content being hidden behind valid footer */
+body {
+    padding-bottom: 200px;
+    /* Approx height of footer */
+}
+
+/* Education Timeline & Progress */
+.edu-progress-container {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.edu-progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.edu-progress-fill {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.edu-progress-text {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    font-family: var(--font-code);
+}
+
+.education-card {
+    cursor: pointer;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.education-card .card-icon {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+}
+
+.education-timeline {
+    margin-top: 2rem;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.education-timeline.hidden {
+    display: none;
+}
+
+.edu-year h4 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--accent);
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.module-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.module-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Sticky Header Styles */
+body.header-fixed {
+    padding-top: 400px;
+    /* Match original header height */
+}
+
+header#hero.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    /* Much smaller height */
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    /* Ensure crop */
+}
+
+header#hero.sticky-header #hero-canvas {
+    height: 100vh;
+    /* Maintain original full viewport height to prevent squashing */
+    top: 0;
+    opacity: 0.5;
+    /* Optional: dim it slightly in header mode if desired, or keep as is */
+}
+
+header#hero.sticky-header .hero-container-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    grid-template-columns: none;
+    /* Reset grid */
+    gap: 1rem;
+}
+
+header#hero.sticky-header .hero-text {
+    width: auto;
+    flex-shrink: 0;
+}
+
+header#hero.sticky-header .hero-name {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+header#hero.sticky-header .hero-name .lname {
+    color: #fff;
+}
+
+header#hero.sticky-header .hero-tagline {
+    display: none;
+}
+
+header#hero.sticky-header .hero-cert-title {
+    display: none;
+}
+
+header#hero.sticky-header .hero-stack-grid {
+    padding-left: 0;
+    width: auto;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header#hero.sticky-header .cert-grid-compact {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.5rem;
+    padding-bottom: 0;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+header#hero.sticky-header .cert-grid-compact::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+header#hero.sticky-header .cert-icon-badge {
+    width: 40px;
+    /* Small badges */
+    height: 40px;
+}
+
+header#hero.sticky-header .cert-icon-badge svg {
+    width: 20px;
+    height: 20px;
+}
+
+header#hero.sticky-header .cert-tooltip {
+    bottom: -150%;
+    /* Show below in header mode? Or just hide? Let's hide for simplicity or nudge */
+    top: 110%;
+    bottom: auto;
+}
+
+header#hero.sticky-header #cert-details-panel {
+    display: none !important;
+    /* Force hide detail panel in sticky mode */
+}
+
+.module-code {
+    font-family: var(--font-code);
+    color: #888;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.module-name {
+    flex-grow: 1;
+    color: #ddd;
+    padding-right: 1rem;
+}
+
+.module-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.module-status.distinction {
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.module-status.passed {
+    color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.module-status.pending {
+    color: #999;
+    background: rgba(153, 153, 153, 0.1);
+    border: 1px solid rgba(153, 153, 153, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive */

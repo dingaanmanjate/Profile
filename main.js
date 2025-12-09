@@ -47,9 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Hero Background Animation (Canvas) ---
-    const canvas = document.getElementById('hero-canvas');
-    if (canvas) {
+    // --- Particle Animation (Reusable) ---
+    const initParticleSystem = (canvasId) => {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
@@ -63,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1.5; // Faster movement
+                this.vx = (Math.random() - 0.5) * 1.5;
                 this.vy = (Math.random() - 0.5) * 1.5;
-                this.size = Math.random() * 3 + 1; // Larger particles
+                this.size = Math.random() * 3 + 1;
             }
 
             update() {
@@ -79,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'; // Brighter dots
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const createParticles = () => {
             particles = [];
-            const count = Math.floor(width * height / 6000); // 2x Density
+            const count = Math.floor(width * height / 6000);
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
             }
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     if (dist < 120) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.4 - dist / 120})`; // Much brighter connections
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.4 - dist / 120})`;
                         ctx.lineWidth = 1.5;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -131,7 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
             initCanvas();
             createParticles();
         });
-    }
+    };
+
+    // Initialize for Hero and Footer
+    initParticleSystem('hero-canvas');
+    initParticleSystem('footer-canvas');
 
     // --- Cert Details Logic (Inline Dropdown) ---
     const certIcons = document.querySelectorAll('.cert-icon-badge');
@@ -237,4 +243,94 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Education Timeline Toggle ---
+    const eduCard = document.getElementById('edu-card-unisa');
+    if (eduCard) {
+        // Helper to smoothly resize parent accordion
+        const resizeAccordion = () => {
+            const accordionContent = eduCard.closest('.accordion-content');
+            if (accordionContent && accordionContent.parentElement.classList.contains('active')) {
+                // 1. Get current height
+                const startHeight = accordionContent.offsetHeight;
+
+                // 2. Set to auto to measure new natural height
+                accordionContent.style.height = 'auto';
+                const endHeight = accordionContent.scrollHeight;
+
+                // 3. Restore start height immediately
+                accordionContent.style.height = startHeight + 'px';
+
+                // 4. Force reflow
+                accordionContent.offsetHeight;
+
+                // 5. Animate to new height
+                accordionContent.style.height = endHeight + 'px';
+            }
+        };
+
+        eduCard.addEventListener('click', (e) => {
+            // Prevent if clicking a link/button within card if any (future proofing)
+            if (e.target.tagName === 'A') return;
+
+            const timeline = eduCard.querySelector('.education-timeline');
+            timeline.classList.toggle('hidden');
+
+            resizeAccordion();
+        });
+
+        // Click Outside to Close
+        document.addEventListener('click', (e) => {
+            const timeline = eduCard.querySelector('.education-timeline');
+            if (eduCard && !eduCard.contains(e.target) && timeline && !timeline.classList.contains('hidden')) {
+                timeline.classList.add('hidden');
+                resizeAccordion();
+            }
+        });
+    }
+
+    // --- Sticky Header & Footer Logic ---
+    const hero = document.getElementById('hero');
+    const footer = document.querySelector('footer');
+    const body = document.body;
+
+    if (hero) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                // Add fixed class
+                if (!hero.classList.contains('sticky-header')) {
+                    hero.classList.add('sticky-header');
+                    body.classList.add('header-fixed');
+                }
+
+                // Shrink Footer
+                if (footer && !footer.classList.contains('footer-shrink')) {
+                    footer.classList.add('footer-shrink');
+                }
+            } else {
+                // Remove fixed class
+                if (hero.classList.contains('sticky-header')) {
+                    hero.classList.remove('sticky-header');
+                    body.classList.remove('header-fixed');
+
+                    // Close all accordions when back at hero
+                    const activeAccordions = document.querySelectorAll('.accordion-section.active');
+                    activeAccordions.forEach(acc => {
+                        acc.classList.remove('active');
+                        const content = acc.querySelector('.accordion-content');
+                        if (content) content.style.height = null;
+
+                        // Also reset any nested education timelines
+                        const timelines = acc.querySelectorAll('.education-timeline');
+                        timelines.forEach(tl => tl.classList.add('hidden'));
+                    });
+                }
+
+                // Expand Footer
+                if (footer && footer.classList.contains('footer-shrink')) {
+                    footer.classList.remove('footer-shrink');
+                }
+            }
+        });
+    }
 });
