@@ -892,6 +892,8 @@ header#hero.sticky-header .hero-stack-grid {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
+    min-width: 0;
+    /* Critical for flex child scrolling */
 }
 
 header#hero.sticky-header .cert-grid-compact {
@@ -986,27 +988,158 @@ header#hero.sticky-header #cert-details-panel {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .layout-container {
-        flex-direction: column;
+/* Responsive Styles */
+@media (max-width: 900px) {
+
+    /* Allow header to grow to fit stacked content on tablets/mobile */
+    header#hero {
+        height: auto;
+        min-height: 500px;
+        padding-bottom: 2rem;
     }
 
-    .hero-badges-container {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .hero-content {
+    /* FIX: When sticky, reset min-height to allow it to shrink */
+    header#hero.sticky-header {
+        min-height: 0 !important;
+        height: 80px !important;
+        /* Enforce sticky height */
         padding-bottom: 0;
     }
 
+    .hero-container-inner {
+        padding-top: 4rem;
+        /* Add top padding since vertically centered might look off */
+    }
+
+    header#hero.sticky-header .hero-container-inner {
+        padding-top: 0;
+        /* Remove the extra top padding in sticky mode */
+        align-items: center;
+        /* Center horizontally again */
+        display: flex;
+        /* Ensure flex for sticky row layout */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Fix Main Content Grid blowing out */
+    .main-content {
+        grid-template-columns: 1fr;
+        /* Force single column matching device width */
+    }
+
+    .layout-container {
+        padding: 1rem;
+        /* Reduce side padding */
+    }
+
+    /* Hero Text Adjustments */
+    .hero-name {
+        font-size: 3.5rem;
+        /* Readable but big */
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Adjust Cards */
+    .card {
+        flex-direction: column;
+        /* Stack icon and text */
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        margin: 0 auto 1rem auto;
+        /* Center icon */
+    }
+
+    .actions {
+        justify-content: center;
+        /* Center buttons */
+    }
+
+    .tags {
+        justify-content: center;
+        flex-wrap: wrap;
+        /* Ensure tags wrap */
+    }
+
+    /* Timeline Adjustments */
+    .timeline {
+        margin-left: 0.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .timeline-marker {
+        left: -1.9rem;
+        /* Re-align marker */
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Mobile Phones */
     .hero-name {
         font-size: 2.5rem;
+    }
+
+    .cert-grid-compact {
+        grid-template-columns: repeat(3, 1fr);
+        /* Reduce columns */
+        gap: 0.5rem;
+    }
+
+    /* Footer Stack (Default State) */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        font-size: 1.1rem;
+    }
+
+    /* Sticky Footer Override */
+    footer.footer-shrink .footer-content {
+        flex-direction: row !important;
+        /* Force row to fit inside 60px */
+        gap: 1rem;
+    }
+
+    footer.footer-shrink .footer-content span {
+        display: none;
+        /* Hide "Connect with me" text in sticky footer to save space */
+    }
+
+    /* Sticky Header Tweaks for Mobile */
+    header#hero.sticky-header .hero-name {
+        font-size: 1rem;
+        /* Smaller name on mobile sticky */
+        white-space: nowrap;
+    }
+
+    header#hero.sticky-header .hero-container-inner {
+        padding: 0 1rem;
+        /* Tighter padding */
+        gap: 0.5rem;
+    }
+
+    /* Module List in Education */
+    .module-list {
+        grid-template-columns: 1fr;
+        /* Single column for modules */
+    }
+
+    .module-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .module-code {
+        width: 100%;
+        font-weight: bold;
     }
 }

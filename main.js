@@ -299,8 +299,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.scrollY > 100) {
                 // Add fixed class
                 if (!hero.classList.contains('sticky-header')) {
+                    const heroHeight = hero.offsetHeight; // Capture height before change
                     hero.classList.add('sticky-header');
                     body.classList.add('header-fixed');
+                    body.style.paddingTop = heroHeight + 'px'; // Apply exact padding
                 }
 
                 // Shrink Footer
@@ -312,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (hero.classList.contains('sticky-header')) {
                     hero.classList.remove('sticky-header');
                     body.classList.remove('header-fixed');
+                    body.style.paddingTop = ''; // Clear inline padding
 
                     // Close all accordions when back at hero
                     const activeAccordions = document.querySelectorAll('.accordion-section.active');
