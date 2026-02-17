@@ -27,30 +27,26 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
-    /* Thin scrollbar */
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0a0a0a;
-    /* Dark track matching background */
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
-    /* Dark gray thumb */
-    border-radius: 4px;
+    background: #444;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    /* Lighter on hover */
+    background: #666;
 }
 
 /* Firefox Support */
 html {
     scrollbar-width: thin;
-    scrollbar-color: #333 #0a0a0a;
+    scrollbar-color: #444 transparent;
 }
 
 body {
@@ -59,6 +55,11 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+body.no-scroll, html.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
 }
 
 a {
@@ -379,21 +380,24 @@ header#hero {
     gap: 2rem;
     align-items: start;
 }
-
-/* Accordion Sections - Card Style for Grid */
+/* Accordion Styles */
 .accordion-section {
     border-bottom: none;
     background-color: var(--bg-card);
-    /* Floating card look */
     border-radius: 16px;
-    overflow: hidden;
-    /* For border radius */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10; /* Above background elements */
 }
 
 .accordion-section:hover {
     transform: translateY(-5px);
+}
+
+.accordion-section.active {
+    z-index: 200; /* Higher than fixed footer (100) */
 }
 
 .accordion-header {
@@ -407,12 +411,6 @@ header#hero {
     transition: all 0.3s ease;
     user-select: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Subtle separator */
-}
-
-.accordion-header:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.02);
 }
 
 .accordion-section.active .accordion-header {
@@ -442,38 +440,90 @@ header#hero {
 .accordion-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.3s ease, opacity 0.3s ease;
     background-color: var(--bg-main);
     opacity: 0;
+    position: relative;
 }
 
 .accordion-section.active .accordion-content {
-    height: auto;
+    height: 300px !important;
+    max-height: 300px !important;
     opacity: 1;
+    overflow-y: scroll !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    display: block;
+    pointer-events: auto;
 }
 
+/* Content wrapper needs to be transparent to snapping */
 .content-wrapper {
-    padding: 1rem 0 3rem 0;
-    /* Vertical padding */
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0 100px 0; /* More bottom padding */
+    width: 100%;
+}
+
+/* Card styles */
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    width: calc(100% - 3rem);
+    margin: 8px 1.5rem;
+    min-height: 120px;
+    height: auto;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.expanded {
+    height: auto !important;
+}
+
+/* Compact view inside accordion */
+.accordion-content .card {
+    padding: 1.5rem;
     gap: 1.5rem;
 }
 
-/* Cards (Generic) */
-.card {
-    background: var(--bg-card);
-    border: none;
-    /* Removed border for cleaner look */
-    border-radius: 12px;
-    /* Smooth rounded corners */
-    padding: 2rem;
-    display: flex;
-    gap: 2rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    align-items: center;
-    /* Center vertically */
-    position: relative;
-    overflow: hidden;
+.accordion-content .card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.accordion-content .card p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Scroll Prompt */
+.scroll-prompt {
+    position: sticky;
+    bottom: 0.5rem;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    color: var(--accent);
+    font-family: var(--font-code);
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 10;
+    animation: bounceUpDown 2s infinite;
+    width: fit-content;
+}
+
+@keyframes bounceUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
 .card::before {

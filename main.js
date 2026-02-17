@@ -3,24 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Accordion Logic ---
     const headers = document.querySelectorAll('.accordion-header');
 
-    // Function to calculate and set explicit height for animation
-    const setHeight = (element) => {
-        const content = element.nextElementSibling;
-        content.style.height = content.scrollHeight + 'px';
-    };
-
-    const clearHeight = (element) => {
-        const content = element.nextElementSibling;
-        content.style.height = '0';
-    };
-
-    // Initialize the active section
-    const activeSection = document.querySelector('.accordion-section.active');
-    if (activeSection) {
-        const header = activeSection.querySelector('.accordion-header');
-        setHeight(header);
-    }
-
     headers.forEach(header => {
         header.addEventListener('click', () => {
             const currentSection = header.parentElement;
@@ -28,22 +10,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Close all sections first
             document.querySelectorAll('.accordion-section').forEach(section => {
-                section.classList.remove('active');
-                clearHeight(section.querySelector('.accordion-header'));
+                if (section !== currentSection) {
+                    section.classList.remove('active');
+                }
             });
 
-            // If it wasn't active before, open it now
+            // Toggle the current one
+            currentSection.classList.toggle('active');
+
+            // If opening, scroll into view
             if (!isCurrentlyActive) {
-                currentSection.classList.add('active');
-                setHeight(header);
+                setTimeout(() => {
+                    currentSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
+
+            // Lock body/html scroll if any section is active
+            const anyActive = document.querySelector('.accordion-section.active');
+            if (anyActive) {
+                document.documentElement.classList.add('no-scroll');
+                document.body.classList.add('no-scroll');
+            } else {
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
             }
         });
-    });
-
-    // Handle resize to auto-adjust heights of active section
-    window.addEventListener('resize', () => {
-        const active = document.querySelector('.accordion-section.active .accordion-header');
-        if (active) setHeight(active);
     });
 
 
@@ -247,45 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Education Timeline Toggle ---
     const eduCard = document.getElementById('edu-card-unisa');
     if (eduCard) {
-        // Helper to smoothly resize parent accordion
-        const resizeAccordion = () => {
-            const accordionContent = eduCard.closest('.accordion-content');
-            if (accordionContent && accordionContent.parentElement.classList.contains('active')) {
-                // 1. Get current height
-                const startHeight = accordionContent.offsetHeight;
-
-                // 2. Set to auto to measure new natural height
-                accordionContent.style.height = 'auto';
-                const endHeight = accordionContent.scrollHeight;
-
-                // 3. Restore start height immediately
-                accordionContent.style.height = startHeight + 'px';
-
-                // 4. Force reflow
-                accordionContent.offsetHeight;
-
-                // 5. Animate to new height
-                accordionContent.style.height = endHeight + 'px';
-            }
-        };
-
         eduCard.addEventListener('click', (e) => {
-            // Prevent if clicking a link/button within card if any (future proofing)
             if (e.target.tagName === 'A') return;
-
             const timeline = eduCard.querySelector('.education-timeline');
             timeline.classList.toggle('hidden');
-
-            resizeAccordion();
-        });
-
-        // Click Outside to Close
-        document.addEventListener('click', (e) => {
-            const timeline = eduCard.querySelector('.education-timeline');
-            if (eduCard && !eduCard.contains(e.target) && timeline && !timeline.classList.contains('hidden')) {
-                timeline.classList.add('hidden');
-                resizeAccordion();
-            }
+            eduCard.classList.toggle('expanded');
         });
     }
 
@@ -297,39 +254,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
-                // Add fixed class
                 if (!hero.classList.contains('sticky-header')) {
-                    const heroHeight = hero.offsetHeight; // Capture height before change
+                    const heroHeight = hero.offsetHeight;
                     hero.classList.add('sticky-header');
                     body.classList.add('header-fixed');
-                    body.style.paddingTop = heroHeight + 'px'; // Apply exact padding
+                    body.style.paddingTop = heroHeight + 'px';
                 }
-
-                // Shrink Footer
                 if (footer && !footer.classList.contains('footer-shrink')) {
                     footer.classList.add('footer-shrink');
                 }
             } else {
-                // Remove fixed class
                 if (hero.classList.contains('sticky-header')) {
                     hero.classList.remove('sticky-header');
                     body.classList.remove('header-fixed');
-                    body.style.paddingTop = ''; // Clear inline padding
-
-                    // Close all accordions when back at hero
-                    const activeAccordions = document.querySelectorAll('.accordion-section.active');
-                    activeAccordions.forEach(acc => {
-                        acc.classList.remove('active');
-                        const content = acc.querySelector('.accordion-content');
-                        if (content) content.style.height = null;
-
-                        // Also reset any nested education timelines
-                        const timelines = acc.querySelectorAll('.education-timeline');
-                        timelines.forEach(tl => tl.classList.add('hidden'));
-                    });
+                    body.style.paddingTop = '';
                 }
-
-                // Expand Footer
                 if (footer && footer.classList.contains('footer-shrink')) {
                     footer.classList.remove('footer-shrink');
                 }
