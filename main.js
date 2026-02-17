@@ -148,65 +148,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Certificate Data Dictionary
     const certData = {
-        "AWS SA": {
-            title: "AWS Certified Solutions Architect",
+        "AWS SAA": {
+            title: "AWS Certified Solutions Architect Associate (Exam Prep)",
             desc: "Validated expertise in designing distributed systems on AWS, focusing on scalability, security, and cost-optimization.",
-            link: "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+            link: "https://coursera.org/verify/DY6ZEG0LDSU7"
         },
-        "Google PCA": {
-            title: "Google Professional Cloud Architect",
+        "GenAI LLM": {
+            title: "Generative AI with Large Language Models",
             desc: "Expert-level validation of designing and managing robust, secure, and scalable Google Cloud architectures.",
-            link: "https://cloud.google.com/learn/certification/cloud-architect"
+            link: "https://coursera.org/verify/TY55QEZUMR4P"
         },
-        "CKA": {
-            title: "Certified Kubernetes Administrator",
+        "Kubernetes": {
+            title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
             desc: "Demonstrated competence in installation, configuration, and management of production-grade Kubernetes clusters.",
-            link: "https://www.cncf.io/certification/cka/"
+            link: "https://coursera.org/verify/TZV4EM4A3CGD"
         },
-        "Security+": {
-            title: "CompTIA Security+",
+        "DevOps AWS": {
+            title: "DevOps on AWS: Code, Build, and Test",
             desc: "Global certification validating baseline skills for core security functions and pursuing an IT security career.",
-            link: "https://www.comptia.org/certifications/security"
+            link: "https://coursera.org/verify/OBZNTW61990N"
         },
-        "CISSP": {
-            title: "Certified Information Systems Security Professional",
+        "Cloud Arch": {
+            title: "Cloud Architecture Design Patterns",
             desc: "Advanced security certification proving effective design, implementation, and management of cybersecurity programs.",
-            link: "https://www.isc2.org/Certifications/CISSP"
+            link: "https://coursera.org/verify/TJRLFI9A57QH"
         },
-        "CEH": {
-            title: "Certified Ethical Hacker",
+        "Data Lakes": {
+            title: "Building Data Lakes on AWS",
             desc: "Understand and know how to look for weaknesses and vulnerabilities in target systems using the same knowledge and tools as a malicious hacker.",
-            link: "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/"
+            link: "https://coursera.org/verify/YNR4QGTLK8VF"
         },
-        "PMP": {
-            title: "Project Management Professional",
+        "Jira Agile": {
+            title: "Agile with Atlassian Jira",
             desc: "The gold standard in project management, validating competence to lead and direct projects and teams.",
-            link: "https://www.pmi.org/certifications/project-management-pmp"
+            link: "https://coursera.org/verify/CCM1A74OX7LA"
         },
-        "Scrum": {
-            title: "Certified Scrum Master",
+        "Git": {
+            title: "Version Control with Git",
             desc: "Understanding of the Scrum framework and how to help teams use it to increase the likelihood of the project's overall success.",
-            link: "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster"
+            link: "https://coursera.org/verify/5OFOQ29ISPPA"
         },
-        "ITIL": {
-            title: "ITIL 4 Foundation",
+        "AWS Essentials": {
+            title: "AWS Cloud Technical Essentials",
             desc: "Understanding the ITIL framework for IT Service Management and how to align IT services with business needs.",
-            link: "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation"
+            link: "https://coursera.org/verify/VJVT6MZ87NUG"
         },
-        "Docker": {
-            title: "Docker Certified Associate",
+        "Google AI": {
+            title: "Google Cloud: Introduction to Generative AI",
             desc: "Validates skillset with Docker Enterprise Edition and Docker Swarm for container orchestration.",
-            link: "https://training.mirantis.com/dca-certification-exam/"
+            link: "https://coursera.org/verify/JJNL8UCUV4NB"
         },
-        "Terraform": {
-            title: "HashiCorp Certified: Terraform Associate",
+        "Time Mgmt": {
+            title: "Work Smarter, Not Harder: Time Management",
             desc: "Cloud engineering skills in infrastructure automation using HashiCorp Terraform.",
-            link: "https://www.hashicorp.com/certification/terraform-associate"
+            link: "https://coursera.org/verify/CJ3XWR5CH6T1"
         },
-        "Linux": {
-            title: "LPI Linux Essentials",
+        "EQ": {
+            title: "Emotional Intelligence",
             desc: "Foundational knowledge of the Linux operating system and open source command line tools.",
-            link: "https://www.lpi.org/our-certifications/linux-essentials-overview/"
+            link: "https://coursera.org/verify/7Q2ZYPX4QDGW"
         }
     };
 
