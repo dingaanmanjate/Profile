@@ -150,62 +150,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const certData = {
         "AWS SAA": {
             title: "AWS Certified Solutions Architect Associate (Exam Prep)",
-            desc: "Validated expertise in designing distributed systems on AWS, focusing on scalability, security, and cost-optimization.",
+            desc: "Advanced preparation for the AWS SAA-C03 exam, covering secure, resilient, high-performing, and cost-optimized architectures.",
             link: "https://coursera.org/verify/DY6ZEG0LDSU7"
         },
-        "GenAI LLM": {
-            title: "Generative AI with Large Language Models",
-            desc: "Expert-level validation of designing and managing robust, secure, and scalable Google Cloud architectures.",
-            link: "https://coursera.org/verify/TY55QEZUMR4P"
+        "Architecting AWS": {
+            title: "Architecting Solutions on AWS",
+            desc: "In-depth knowledge of AWS services and how they fit into cloud-based solutions to meet business needs.",
+            link: "https://coursera.org/verify/H0KU2SE7IGGH"
         },
-        "Kubernetes": {
-            title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
-            desc: "Demonstrated competence in installation, configuration, and management of production-grade Kubernetes clusters.",
-            link: "https://coursera.org/verify/TZV4EM4A3CGD"
+        "Cloud Design": {
+            title: "Cloud Architecture Design Patterns",
+            desc: "Focuses on scalable, reliable, and maintainable cloud-native application designs using industry-standard patterns.",
+            link: "https://coursera.org/verify/TJRLFI9A57QH"
         },
         "DevOps AWS": {
             title: "DevOps on AWS: Code, Build, and Test",
-            desc: "Global certification validating baseline skills for core security functions and pursuing an IT security career.",
+            desc: "Expertise in CI/CD pipelines, automating infrastructure with AWS tools, and improving developer productivity.",
             link: "https://coursera.org/verify/OBZNTW61990N"
         },
-        "Cloud Arch": {
-            title: "Cloud Architecture Design Patterns",
-            desc: "Advanced security certification proving effective design, implementation, and management of cybersecurity programs.",
-            link: "https://coursera.org/verify/TJRLFI9A57QH"
+        "Containers": {
+            title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+            desc: "Building and deploying containerized applications across various cloud platforms using standard orchestration tools.",
+            link: "https://coursera.org/verify/TZV4EM4A3CGD"
         },
         "Data Lakes": {
             title: "Building Data Lakes on AWS",
-            desc: "Understand and know how to look for weaknesses and vulnerabilities in target systems using the same knowledge and tools as a malicious hacker.",
+            desc: "Designing and implementing scalable data lake solutions on AWS for big data and analytics workloads.",
             link: "https://coursera.org/verify/YNR4QGTLK8VF"
-        },
-        "Jira Agile": {
-            title: "Agile with Atlassian Jira",
-            desc: "The gold standard in project management, validating competence to lead and direct projects and teams.",
-            link: "https://coursera.org/verify/CCM1A74OX7LA"
         },
         "Git": {
             title: "Version Control with Git",
-            desc: "Understanding of the Scrum framework and how to help teams use it to increase the likelihood of the project's overall success.",
+            desc: "Mastery of Git workflows, branching strategies, and collaboration techniques for modern software development.",
             link: "https://coursera.org/verify/5OFOQ29ISPPA"
+        },
+        "Jira": {
+            title: "Agile with Atlassian Jira",
+            desc: "Applying Agile methodologies (Scrum/Kanban) and optimizing project workflows using the Atlassian ecosystem.",
+            link: "https://coursera.org/verify/CCM1A74OX7LA"
         },
         "AWS Essentials": {
             title: "AWS Cloud Technical Essentials",
-            desc: "Understanding the ITIL framework for IT Service Management and how to align IT services with business needs.",
+            desc: "Foundational technical knowledge of AWS compute, network, storage, and database services.",
             link: "https://coursera.org/verify/VJVT6MZ87NUG"
         },
-        "Google AI": {
-            title: "Google Cloud: Introduction to Generative AI",
-            desc: "Validates skillset with Docker Enterprise Edition and Docker Swarm for container orchestration.",
-            link: "https://coursera.org/verify/JJNL8UCUV4NB"
+        "GenAI LLM": {
+            title: "Generative AI with Large Language Models",
+            desc: "Developing and fine-tuning GenAI applications using state-of-the-art LLMs and AWS infrastructure.",
+            link: "https://coursera.org/verify/TY55QEZUMR4P"
         },
         "Time Mgmt": {
             title: "Work Smarter, Not Harder: Time Management",
-            desc: "Cloud engineering skills in infrastructure automation using HashiCorp Terraform.",
+            desc: "Optimizing personal and professional productivity through effective prioritization and resource management.",
             link: "https://coursera.org/verify/CJ3XWR5CH6T1"
         },
         "EQ": {
             title: "Emotional Intelligence",
-            desc: "Foundational knowledge of the Linux operating system and open source command line tools.",
+            desc: "Harnessing soft skills for effective leadership, collaboration, and high-performance in technical environments.",
             link: "https://coursera.org/verify/7Q2ZYPX4QDGW"
         }
     };

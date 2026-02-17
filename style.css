@@ -563,6 +563,35 @@ header#hero {
     border: 1px solid #333;
 }
 
+/* Tech Stack Specific */
+.tech-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tech-category {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.tech-category:last-child {
+    margin-bottom: 0;
+}
+
+.tech-category h4 {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.3rem;
+}
+
+.tech-category .tags {
+    margin-bottom: 0;
+    flex-wrap: wrap;
+}
+
 .actions {
     display: flex;
     gap: 1.5rem;
